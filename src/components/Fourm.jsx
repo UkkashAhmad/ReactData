@@ -1,146 +1,207 @@
-import { useState } from "react";
-import React from 'react';
+import { Formik, Form, Field } from "formik";
 
-function Fourm() {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState(0);
-  const [school, setSchool] = useState('');
-  const [gender, setGender] = useState('');
-  const [city, setCity] = useState('');
 
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
-  const handleAge = (e) => {
-    setAge(e.target.value);
-  };
-  const handleSchool = (e) => {
-    setSchool(e.target.value);
-  };
-  const handleGender = (e) => {
-    setGender(e.target.value);
-  };
-  const handleSumbit = () => {
-    console.log(name, school, age, gender, city);
-  };
-  const handleCity = (e) => {
-    setCity(e.target.value);
-  };
-
+const FormComponent = () => {
   return (
-    <div style={styles.formContainer}>
-      <label style={styles.label}>Name</label>
-      <input
-        type="text"
-        value={name}
-        onChange={handleName}
-        placeholder="Enter Name"
-        style={styles.input}
-      />
-      <br />
-
-      <label style={styles.label}>Age</label>
-      <input
-        type="number"
-        value={age}
-        onChange={handleAge}
-        placeholder="Enter Age"
-        style={styles.input}
-      />
-      <br />
-
-      <label style={styles.label}>School</label>
-      <input
-        type="text"
-        value={school}
-        onChange={handleSchool}
-        placeholder="Enter School"
-        style={styles.input}
-      />
-      <br />
-
-      <label style={styles.label}>Select Gender</label>
-      <br />
-
-      <label htmlFor="Male" style={styles.radioButtonLabel}>
-        Male
-      </label>
-      <input
-        type="radio"
-        name="gender"
-        value="male"
-        onChange={handleGender}
-        style={styles.radioButton}
-      />
-      <label htmlFor="Female" style={styles.radioButtonLabel}>
-        Female
-      </label>
-      <input
-        type="radio"
-        name="gender"
-        value="female"
-        checked = {true}
-        onChange={handleGender}
-        style={styles.radioButton}
-      />
-      <br />
-
-      <label style={styles.label}>City</label>
-      <select
-        name="city"
-        onChange={handleCity}
-        value={city}
-        style={styles.select}
+  
+  <>
+              <h1 className="text-3xl font-bold text-center mb-6">Welcome To ISDP University</h1>
+    <div className="container mx-auto p-4 mt-8 border border-gray-200">
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          fatherName: "",
+          gender: "",
+          phoneNumber: "",
+          className: "",
+          college: "",
+          email: "",
+          fatherNumber: "",
+          address: "",
+          admissionDate: "",
+          admissionFee: "",
+        }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
       >
-        <option value="LHR">Lahore</option>
-        <option value="RWP">Rawalpindi</option>
-        <option value="ISB">Islamabad</option>
-        <option value="SRG">Sargodha</option>
-      </select>
+        <Form className="space-y-4">
+          <div className="flex space-x-4">
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                First Name
+              </label>
+              <Field
+                name="firstName"
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
 
-      <button onClick={handleSumbit} style={styles.submitButton}>
-        Submit
-      </button>
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Last Name
+              </label>
+              <Field
+                name="lastName"
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+          </div>
+
+          <div className="flex space-x-4 mt-4">
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Father Name
+              </label>
+              <Field
+                name="fatherName"
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <Field
+                type="number"
+                name="phoneNumber"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+          </div>
+
+          <div className="flex space-x-4 mt-4">
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Class For Admission
+              </label>
+              <Field
+                name="className"
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Priveous College
+              </label>
+              <Field
+                name="college"
+                type="text"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+          </div>
+
+          <div className="flex space-x-4 mt-4">
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
+              <Field
+                name="email"
+                type="email"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Father Phone
+              </label>
+              <Field
+                type="number"
+                name="fatherNumber"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+          </div>
+
+          <div className="flex space-x-4 mt-4">
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Admission Date
+              </label>
+              <Field
+                name="admissionDate"
+                type="date"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+
+            <div className="w-1/2">
+              <label className="block text-sm font-medium text-gray-700">
+                Admission Fee
+              </label>
+              <Field
+                name="admissionFee"
+                type="number"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
+          </div>
+
+          <div className="form-group mt-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Gender
+            </label>
+            <div className="radio-group">
+              <label className="inline-flex items-center">
+                <Field
+                  type="radio"
+                  value="male"
+                  name="gender"
+                  className="form-radio h-4 w-4 text-indigo-600"
+                />
+                <span className="ml-2">Male</span>
+              </label>
+              <label className="inline-flex items-center ml-6">
+                <Field
+                  type="radio"
+                  value="female"
+                  name="gender"
+                  className="form-radio h-4 w-4 text-indigo-600"
+                />
+                <span className="ml-2">Female</span>
+              </label>
+            </div>
+          </div>
+
+          <div className="form-group mt-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Address
+            </label>
+            <Field
+              name="address"
+              as="select"
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="Multan">Multan</option>
+              <option value="Lahore">Lahore</option>
+              <option value="Bahawalpur">Bahawalpur</option>
+              <option value="Rawalpindi">Rawalpindi</option>
+            </Field>
+          </div>
+
+          <div className="form-group">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            >
+              Submit
+            </button>
+          </div>
+        </Form>
+      </Formik>
     </div>
-  );
-}
-
-const styles = {
-  formContainer: {
-    maxWidth: '400px',
-    margin: 'auto',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '5px',
-    fontWeight: 'bold',
-  },
-  input: {
-    width: '100%',
-    padding: '8px',
-    marginBottom: '10px',
-    boxSizing: 'border-box',
-  },
-  radioButtonLabel: {
-    marginRight: '10px',
-  },
-  radioButton: {
-    marginRight: '5px',
-  },
-  select: {
-    width: '100%',
-    padding: '8px',
-    marginBottom: '10px',
-    boxSizing: 'border-box',
-  },
-  submitButton: {
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
+    </>
+    );
 };
 
-export default Fourm;
+export default FormComponent;
